@@ -10,9 +10,9 @@ Install the library with
 ```npm install --save variables-type-validator```
     
 ```javascript
-let typeValidator = require('variables-type-validator');
+let validator = require('variables-type-validator');
 
-const valid = typeValidator({
+const valid = validator.validate({
    variable_name: {
        value:"dummy string",
        type:"String"
@@ -61,7 +61,7 @@ length parameter accept an object. the length of the variable can be define as b
 for example :-
 
 ```javascript
-const valid = typeValidator({
+const valid = validator.validate({
     variable_name:{
         value:[1,2,3,4,5,6,7],
         type:"Array",
