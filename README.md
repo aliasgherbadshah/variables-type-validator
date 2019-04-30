@@ -33,7 +33,7 @@ console.log(valid)
 
 
 
-#### **type** 
+### **type** 
 type parameter accept four values 
 1. String
 2. Number
@@ -44,17 +44,17 @@ type parameter accept four values
 
 this module also help you with other characteristics of variable like 
 
-#### **required : true** 
+### **required : true** 
 this parameter define is the value of given variable is required or not.
  
 ###### Note :- by default required parameter is _true_
 
-#### **default: value**
+### **default: value**
 
 you can also set default value to any variable if its value is empty or null. 
 
 
-#### **length** 
+### **length** 
 
 you can also define the length of the value of and variable. The
 length parameter accept an object. the length of the variable can be define as below
@@ -88,7 +88,7 @@ const valid = validator.validate({
 
 you can also pre define the schema for dataset you get it helps to validate the data and avoid unnecessary values.
 
-#### creating Schema
+### creating Schema
 first you have to register a schema an give it a name
 
 ###### Note :- schema name should be unique other wise it will throw an error.
@@ -115,7 +115,7 @@ validator.createScheam("my_schema",{
 you can use same variable as you did in **_validate_** methods all parameters will work same as it does in **_validate_** method. 
 
 
-#### validating throw Schema
+### validating throw Schema
 
 validating throw registered schema is super easy you just need to call the _**validateByScheam**_ method.
 
@@ -131,7 +131,7 @@ const valid = validator.validateByScheam("my_schema",{
  and this is it. now this method find the schema you entered and validate the data which you inserted. 
 ###### Note :- variable name should be same as you define on schema otherwise it will not validate the variable. 
 
-#### any : false
+### any : false
 
 you can also restrict the unwanted variable by defining _**any**_  parameter in schema options.
 
