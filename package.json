@@ -1,12 +1,11 @@
 {
   "name": "variables-type-validator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "this package help to verify the type and characterstics of any variable provided",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "keywords": [
     "validator",
     "validation",
