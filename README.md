@@ -63,13 +63,13 @@ for example :-
 ```javascript
 const valid = typeValidator({
     variable_name:{
-    value:[1,2,3,4,5,6,7],
-         type:"Array",
-         required:true,
-         length:{
+        value:[1,2,3,4,5,6,7],
+        type:"Array",
+        required:true,
+        length:{
             gte:5,
             lte:10
-         }
+        }
     },
      
  })
