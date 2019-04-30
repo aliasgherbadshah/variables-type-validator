@@ -34,14 +34,15 @@ console.log(valid)
 
 
 #### **type** 
-type parameter accept four valeus 
+type parameter accept four values 
 1. String
 2. Number
 3. Array
 4. Object
+5. Boolean
 
 
-this module also help you with other characterstics of variable like 
+this module also help you with other characteristics of variable like 
 
 #### **required : true** 
 this parameter define is the value of given variable is required or not

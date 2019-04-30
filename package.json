@@ -19,5 +19,10 @@
     "type-check"
   ],
   "author": "Ali asgher badshah <aliasgherbadshah128@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aliasgherbadshah/variables-type-validator"
+  },
+  "homepage": "https://github.com/aliasgherbadshah"
 }
