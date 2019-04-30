@@ -31,7 +31,7 @@ module.exports = typeValidatorFunction =(variable,condition,key)=>{
                 return true;
         }
     }catch (err) {
-        console.error(err);
+        console.log(new Error(err));
     }
 
 };

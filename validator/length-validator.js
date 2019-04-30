@@ -62,7 +62,7 @@ module.exports = lengthValidatorFunction =(length,conditions,key)=>{
             }
         }
     }catch (err) {
-        console.error(err);
+        console.log(new Error(err));
     }
 
 };

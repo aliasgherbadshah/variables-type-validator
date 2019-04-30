@@ -9,13 +9,20 @@ const requestHandler = (request, response) => {
 
 const server = http.createServer(requestHandler);
 
-const valid = validator.validate({
-    aa:{
-        value:"aa",
-        type:"String"
+validator.createScheam("my_scheam",{
+    sample_text:{
+        type:"String",
+        required:true,
+        default:'sample',
+        length:{
+            gte:3,
+            lte:10
+        }
     }
-});
-console.log(valid);
+},{any:false});
+
+const validate = validator.validateByScheam("my_scheam",{sample_text: "temp"});
+console.log(validate);
 
 server.listen(port, (err) => {
     if (err) {

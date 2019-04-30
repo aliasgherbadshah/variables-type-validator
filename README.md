@@ -45,7 +45,14 @@ type parameter accept four values
 this module also help you with other characteristics of variable like 
 
 #### **required : true** 
-this parameter define is the value of given variable is required or not
+this parameter define is the value of given variable is required or not.
+ 
+###### Note :- by default required parameter is _true_
+
+#### **default: value**
+
+you can also set default value to any variable if its value is empty or null. 
+
 
 #### **length** 
 
@@ -65,6 +72,7 @@ const valid = validator.validate({
     variable_name:{
         value:[1,2,3,4,5,6,7],
         type:"Array",
+        default:[1,2,3,4,5],
         required:true,
         length:{
             gte:5,
@@ -76,7 +84,90 @@ const valid = validator.validate({
  ```
 
 
+# Schema
 
+you can also pre define the schema for dataset you get it helps to validate the data and avoid unnecessary values.
+
+#### creating Schema
+first you have to register a schema an give it a name
+
+###### Note :- schema name should be unique other wise it will throw an error.
+
+```javascript
+const validator = require('validator');
+
+validator.createScheam("my_schema",{
+    variable1:{
+        type:"Array",
+        required:true,
+        length:{
+            gte:5,
+            lte:10
+        }
+    },
+    variable2:{
+        type:"String",
+        required:false
+    }
+     
+ })
+ ```
+you can use same variable as you did in **_validate_** methods all parameters will work same as it does in **_validate_** method. 
+
+
+#### validating throw Schema
+
+validating throw registered schema is super easy you just need to call the _**validateByScheam**_ method.
+
+ 
+```javascript
+
+const valid = validator.validateByScheam("my_schema",{
+    variable1:[1,2,3,4,5,6],
+    variable2:"sample text"
+ })
+ 
+ ```
+ and this is it. now this method find the schema you entered and validate the data which you inserted. 
+###### Note :- variable name should be same as you define on schema otherwise it will not validate the variable. 
+
+#### any : false
+
+you can also restrict the unwanted variable by defining _**any**_  parameter in schema options.
+
+
+```javascript
+validator.createScheam("my_schema",{
+    variable1:{
+        type:"String",
+        required:false
+    }
+     
+ },{any:false})
+ ```
+ now if you insert data which has other variable unlike you define it will throw an response like below
+ 
+
+```javascript
+const valid = validator.validateByScheam("my_schema",{
+    variable1:"sample text",
+    variable2:10
+ })
+ 
+ console.log(valid);
+
+/*
+{
+    result: false,
+    message: 'variable variable2 is not allowed in schema' 
+}   
+ */
+
+ ```
+ 
+ it simple reject all the other variable which are not set in a scheam.
+ 
+######  Note :- by default the _**any**_  parameter wil be true which means it allow other variables which are not defined in scheam 
 
 ## **validation ERROR messages**
 

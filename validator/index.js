@@ -11,8 +11,7 @@ module.exports = store  = function(variables){
         };
 
         for(let i in variables){
-
-            if(variables[i].value){
+            if(variables[i].value || variables[i].default){
                 variables[i] = supportFunction.rearrengeKey( variables[i]);
                 let valid = false;
                 let validatorResult =[];
@@ -48,17 +47,27 @@ module.exports = store  = function(variables){
                     break;
                 }
             }else {
-                status = {
-                    status:false,
-                    message:"unable to found value for key "+ i
-                };
+
+                if(variables[i].required === false){
+                    status = {
+                        status:true,
+                        message:"all variables are valid"
+                    };
+                }else {
+                    status = {
+                        status:false,
+                        message:"unable to found value for key "+ i
+                    };
+                }
+
                 break;
             }
 
         }
         return status;
     }catch (err) {
-        console.error(err);
+
+        console.log(new Error(err));
     }
 
 };
