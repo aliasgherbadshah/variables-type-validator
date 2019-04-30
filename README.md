@@ -177,6 +177,7 @@ const valid = validator.validateByScheam("my_schema",{
  2. type of </your variable name> should be Object
  3. type of </your variable name> should be String
  4. type of </your variable name> should be Number
+ 5. type of </your variable name> should be Boolean
 
 
 
