@@ -6,7 +6,7 @@ module.exports = store  = function(variables){
 
     try {
         let status={
-            valid:true,
+            status:true,
             message:"all variables are valid"
         };
 
