@@ -42,7 +42,7 @@ module.exports = store  = function(variables){
                 if(validatorResult.length > 0 && validatorResult.indexOf(false)>-1){
                     status = {
                         status:false,
-                        message:validatorMessages[validatorResult.indexOf(false)]
+                        message:variables[i].errorMessage ||  validatorMessages[validatorResult.indexOf(false)]
                     };
                     break;
                 }
@@ -56,7 +56,8 @@ module.exports = store  = function(variables){
                 }else {
                     status = {
                         status:false,
-                        message:"unable to found value for key "+ i
+                        message:variables[i].errorMessage || "unable to found value for key "+ i,
+                        
                     };
                 }
 

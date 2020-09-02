@@ -36,7 +36,7 @@ const validateSchema = (schemaName, data)=>{
 };
 const createSchema =(name, scheamData,options)=>{
     if(schema[name]){
-        console.log(new Error("scheam " +name + " already exist"));
+        console.warn("scheam " +name + " already exist");
     }else {
         schema[name] = scheamData;
     }

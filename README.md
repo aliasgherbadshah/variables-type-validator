@@ -15,7 +15,8 @@ let validator = require('variables-type-validator');
 const valid = validator.validate({
    variable_name: {
        value:"dummy string",
-       type:"String"
+       type:"String",
+       errorMessage:"custom error message" //for custom message
    },
         
 })
@@ -107,7 +108,8 @@ validator.createScheam("my_schema",{
     },
     variable2:{
         type:"String",
-        required:false
+        required:false,
+        errorMessage:"custom error message" //for custom message
     }
      
  })
