@@ -97,7 +97,7 @@ first you have to register a schema an give it a name
 ```javascript
 const validator = require('validator');
 
-validator.createScheam("my_schema",{
+validator.createSchema("my_schema",{
     variable1:{
         type:"Array",
         required:true,
@@ -119,12 +119,12 @@ you can use same variable as you did in **_validate_** methods all parameters wi
 
 ### validating throw Schema
 
-validating throw registered schema is super easy you just need to call the _**validateByScheam**_ method.
+validating throw registered schema is super easy you just need to call the _**validateBySchema**_ method.
 
  
 ```javascript
 
-const valid = validator.validateByScheam("my_schema",{
+const valid = validator.validateBySchema("my_schema",{
     variable1:[1,2,3,4,5,6],
     variable2:"sample text"
  })
@@ -139,7 +139,7 @@ you can also restrict the unwanted variable by defining _**any**_  parameter in 
 
 
 ```javascript
-validator.createScheam("my_schema",{
+validator.createSchema("my_schema",{
     variable1:{
         type:"String",
         required:false
@@ -151,7 +151,7 @@ validator.createScheam("my_schema",{
  
 
 ```javascript
-const valid = validator.validateByScheam("my_schema",{
+const valid = validator.validateBySchema("my_schema",{
     variable1:"sample text",
     variable2:10
  })
@@ -167,9 +167,9 @@ const valid = validator.validateByScheam("my_schema",{
 
  ```
  
- it simple reject all the other variable which are not set in a scheam.
+ it simple reject all the other variable which are not set in a Schema.
  
-######  Note :- by default the _**any**_  parameter wil be true which means it allow other variables which are not defined in scheam 
+######  Note :- by default the _**any**_  parameter wil be true which means it allow other variables which are not defined in Schema 
 
 ## **validation ERROR messages**
 

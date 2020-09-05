@@ -1,6 +1,6 @@
 {
   "name": "variables-type-validator",
-  "version": "1.1.1",
+  "version": "1.1.4",
   "description": "this package help to verify the type and characterstics of any variable provided",
   "main": "index.js",
   "scripts": {
