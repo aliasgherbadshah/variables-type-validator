@@ -171,6 +171,19 @@ const valid = validator.validateBySchema("my_schema",{
  
 ######  Note :- by default the _**any**_  parameter wil be true which means it allow other variables which are not defined in Schema 
 
+## **Schema options**
+ Options accept following values
+
+| Parameter               | Optional | Default | Accept | Description
+| ------------------ | ------- | ------- | ------- | ------- |
+| type | No | no default value | 'String', 'Number', 'Array', 'Object', 'Boolean' | defines type of value accepted for the required data.
+| required | Yes | false | true/false | define the value of given variable is required or not.
+| default | Yes | no default value | default value depend on **type** parameter| set default value to any variable if its value is empty or null.
+| length | Yes | no default value | accept object | object contains following values 'gte', 'lte', 'eq', 'gt', 'lt' check above example for details
+| restrictSpecialCharacters | Yes | false | true/false | restrict special characters in text (only work with 'String' **type** variables)
+
+
+
 ## **validation ERROR messages**
 
 => if _**type**_ of given variable does not matched

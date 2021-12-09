@@ -10,6 +10,12 @@ module.exports = {
         if(obj.hasOwnProperty('length')){
             tempObj.length = obj.length
         }
+        if(obj.hasOwnProperty('errorMessage')){
+            tempObj.errorMessage = obj.errorMessage
+        }
+        if(obj.hasOwnProperty('restrictSpecialCharacters')){
+            tempObj.restrictSpecialCharacters = obj.restrictSpecialCharacters
+        }
         tempObj.value = obj.value|| obj.default || null;
         return tempObj
     }

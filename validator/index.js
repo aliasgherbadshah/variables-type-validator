@@ -1,63 +1,65 @@
 const typeValidator = require("./type-validator");
 const lengthValidator = require("./length-validator");
+const specialCharactersValidator = require("./special-characters-validator");
 const supportFunction = require("./support");
 
-module.exports = store  = function(variables){
+module.exports = store = function (variables) {
 
     try {
-        let status={
-            status:true,
-            message:"all variables are valid"
+        let status = {
+            status: true,
+            message: "all variables are valid"
         };
 
-        for(let i in variables){
-            if(variables[i].value || variables[i].default){
-                variables[i] = supportFunction.rearrengeKey( variables[i]);
+        for (let i in variables) {
+            if (variables[i].value || variables[i].default) {
+                variables[i] = supportFunction.rearrengeKey(variables[i]);
                 let valid = false;
-                let validatorResult =[];
-                let validatorMessages =[];
-                for(let key in variables[i]){
-                    let result ={};
+                let validatorResult = [];
+                let validatorMessages = [];
+                for (let key in variables[i]) {
+                    let result = {};
                     switch (key) {
                         case "type":
-                            result = typeValidator(variables[i].value,variables[i].type, i);
+                            result = typeValidator(variables[i].value, variables[i].type, i);
                             validatorMessages.push(result.message);
                             validatorResult.push(result.result);
-                            break;
                         case "required":
-                            result = variables[i].value === undefined || variables[i].value === null || variables[i].value === ''?{
-                                result:false,message:"variable "+ i + " cannot be null"
-                            }:{result:true,message:true};
+                            result = variables[i].value === undefined || variables[i].value === null || variables[i].value === '' ? {
+                                result: false, message: "variable " + i + " cannot be null"
+                            } : { result: true, message: true };
                             validatorMessages.push(result.message);
                             validatorResult.push(result.result);
-                            break;
                         case "length":
-                            result = lengthValidator(Object.keys(variables[i].value).length,variables[i].length,i);
+                            result = lengthValidator(Object.keys(variables[i].value).length, variables[i].length, i);
+                            validatorMessages.push(result.message);
+                            validatorResult.push(result.result);
+                        case "restrictSpecialCharacters":
+                            result = specialCharactersValidator(variables[i].value, variables[i].restrictSpecialCharacters, variables[i].type, i);
                             validatorMessages.push(result.message);
                             validatorResult.push(result.result);
                         default:
-                            break;
                     }
                 }
-                if(validatorResult.length > 0 && validatorResult.indexOf(false)>-1){
+                if (validatorResult.length > 0 && validatorResult.indexOf(false) > -1) {
                     status = {
-                        status:false,
-                        message:variables[i].errorMessage ||  validatorMessages[validatorResult.indexOf(false)]
+                        status: false,
+                        message: variables[i].errorMessage || validatorMessages[validatorResult.indexOf(false)]
                     };
                     break;
                 }
-            }else {
+            } else {
 
-                if(variables[i].required === false){
+                if (variables[i].required === false) {
                     status = {
-                        status:true,
-                        message:"all variables are valid"
+                        status: true,
+                        message: "all variables are valid"
                     };
-                }else {
+                } else {
                     status = {
-                        status:false,
-                        message:variables[i].errorMessage || "unable to found value for key "+ i,
-                        
+                        status: false,
+                        message: variables[i].errorMessage || "unable to found value for key " + i,
+
                     };
                 }
 
@@ -66,7 +68,7 @@ module.exports = store  = function(variables){
 
         }
         return status;
-    }catch (err) {
+    } catch (err) {
 
         console.log(new Error(err));
     }
